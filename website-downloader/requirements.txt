@@ -1,5 +1,0 @@
-playwright
-aiohttp
-beautifulsoup4
-aiofiles
-requests
