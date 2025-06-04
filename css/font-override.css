@@ -1,0 +1,162 @@
+/* Minimal font override to replace Geometria with Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Base font for the site */
+body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Preserve Georgia font on musician pages for specific elements */
+.musician-page .t151__text,
+.musician-page .t151b__text,
+.musician-page .t013__autor-title,
+.musician-page .t013__autor-descr,
+.musician-page .t013__text,
+.musician-page .t-title,
+.musician-page .t-text,
+.musician-page .t-descr,
+.musician-page [class*="t-"] {
+    font-family: "Georgia", serif !important;
+}
+
+/* Preserve PT Serif where it's explicitly set via inline styles */
+[style*="font-family: 'PT Serif'"],
+[style*="font-family: 'pt serif'"],
+[style*="font-family: PT Serif"],
+[style*="font-family:pt serif"] {
+    font-family: 'PT Serif', serif !important;
+}
+
+/* Override all other instances of Geometria with Montserrat */
+:not(.musician-page) [style*="font-family: 'Geometria'"],
+:not(.musician-page) [style*="font-family: 'geometria'"],
+:not(.musician-page) [style*="font-family: Geometria"],
+:not(.musician-page) [style*="font-family:geometria"],
+:not(.musician-page) .t-text,
+:not(.musician-page) .t-name,
+:not(.musician-page) .t-title,
+:not(.musician-page) .t-descr,
+:not(.musician-page) .t-uptitle,
+:not(.musician-page) .t229__list_item {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+}
+
+/* Ensure navigation and other UI elements use Montserrat */
+.t229__list_item,
+.t-menu__link,
+.t-menusub__link,
+.t-menusub__menu,
+.t-menu__link-item,
+.t-menusub__menu-link,
+[class*="t-"]:not(.musician-page *) {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Override any inline styles with Geometria */
+[style*="font-family: 'Geometria'"],
+[style*="font-family: 'geometria'"],
+[style*="font-family: Geometria"],
+[style*="font-family:geometria"] {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+body:not(.musician-page),
+.t-text:not(.musician-page *),
+.t-title:not(.musician-page *),
+.t-descr:not(.musician-page *),
+.t-uptitle:not(.musician-page *),
+.t-name:not(.musician-page *),
+.t-menu__link-item:not(.musician-page *),
+.t-btn:not(.musician-page *),
+.t-card__title:not(.musician-page *),
+.t-card__descr:not(.musician-page *),
+.t001__title:not(.musician-page *),
+.t001__descr:not(.musician-page *),
+.t001__uptitle:not(.musician-page *),
+.t596__title:not(.musician-page *),
+.t596__uptitle:not(.musician-page *),
+.popup:not(.musician-page *),
+.popup-content:not(.musician-page *) {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Fix specific elements that might need weight adjustments */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+}
+
+/* Fix for navigation items */
+.t-menu__link-item:not(.musician-page *) {
+    font-weight: 700 !important;
+}
+
+/* Fix for buttons */
+.t-btn {
+    font-weight: 700 !important;
+}
+
+/* Material Icons - Ensure proper display */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+/* Base Material Icons styles */
+.material-icons {
+  font-family: 'Material Icons' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure Material Icons are not overridden by other styles */
+.material-icons,
+[class*="material-icons"],
+:not(.musician-page) .material-icons,
+:not(.musician-page) [class*="material-icons"] {
+  font-family: 'Material Icons' !important;
+  /* Reset any font overrides */
+  font-style: normal !important;
+  font-weight: normal !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+/* Style for the award icons */
+.material-icons.laurel {
+  color: #c5a47e; /* Gold color for awards */
+  vertical-align: middle;
+  margin-right: 8px;
+  /* Ensure the icon is visible */
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure popup content uses Montserrat */
+.t-popup__container,
+.t-popup__container * {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
