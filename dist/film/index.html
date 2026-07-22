@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aleksei Borovikov — Filmmaker & Editor</title>
+  <meta name="description" content="Official portfolio of Aleksei Borovikov, award-winning independent filmmaker, director, and editor. View directing reels, featured short films (Brother, One More Please), and achievements.">
+  <meta name="keywords" content="Aleksei Borovikov, filmmaker, director, film editor, independent cinema, short film, Brother, Chicago director">
+  <link rel="canonical" href="https://film.aborovikov.com">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://film.aborovikov.com">
+  <meta property="og:title" content="Aleksei Borovikov — Filmmaker & Editor">
+  <meta property="og:description" content="Watch short films and directing reels of Aleksei Borovikov.">
+  <meta property="og:image" content="https://film.aborovikov.com/images/ab-headshot-sq.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://film.aborovikov.com">
+  <meta property="twitter:title" content="Aleksei Borovikov — Filmmaker & Editor">
+  <meta property="twitter:description" content="Watch short films and directing reels of Aleksei Borovikov.">
+  <meta property="twitter:image" content="https://film.aborovikov.com/images/ab-headshot-sq.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --font-header: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --bg-dark: #070709;
+      --bg-card: rgba(18, 18, 22, 0.7);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --accent: #d4a359;
+      --accent-glow: rgba(212, 163, 89, 0.3);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: var(--font-header);
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    /* HERO SECTION WITH BACKGROUND VIDEO */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      background-color: #000;
+    }
+
+    .video-background iframe {
+      width: 100vw;
+      height: 56.25vw; /* 16:9 Aspect Ratio */
+      min-height: 100vh;
+      min-width: 177.77vh; /* 16:9 Aspect Ratio */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.35;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(7, 7, 9, 0.4) 0%, rgba(7, 7, 9, 0.95) 100%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 0 20px;
+      max-width: 800px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-header);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: var(--font-header);
+      font-size: 4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 30px;
+    }
+
+    .play-reel-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 36px;
+      border-radius: 50px;
+      background: #ffffff;
+      color: var(--bg-dark);
+      font-family: var(--font-header);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .play-reel-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(212, 163, 89, 0.3);
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    /* SECTION GENERAL STYLES */
+    section {
+      padding: 120px 8%;
+      position: relative;
+      z-index: 3;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      font-family: var(--font-header);
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-header);
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* ABOUT SECTION */
+    .about-container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .about-text p {
+      margin-bottom: 24px;
+    }
+
+    .about-awards-img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    /* FILMS GRID SECTION */
+    .films-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .film-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative;
+    }
+
+    .film-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(212, 163, 89, 0.15);
+    }
+
+    .film-thumbnail-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .film-thumbnail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .film-card:hover .film-thumbnail {
+      transform: scale(1.05);
+    }
+
+    .film-card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.85) 100%);
+      z-index: 1;
+    }
+
+    .film-card-content {
+      padding: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .film-meta {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-family: var(--font-header);
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .film-title {
+      font-family: var(--font-header);
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .film-card-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* SERVICES SECTION */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 40px;
+      border-radius: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .service-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: rgba(212, 163, 89, 0.1);
+      border: 1px solid rgba(212, 163, 89, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .service-title {
+      font-family: var(--font-header);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .service-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* CONTACT / FOOTER */
+    footer {
+      background: #040405;
+      border-top: 1px solid var(--border-color);
+      padding: 100px 8% 50px 8%;
+      text-align: center;
+      z-index: 3;
+      position: relative;
+    }
+
+    .contact-title {
+      font-family: var(--font-header);
+      font-size: 0.9rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .contact-email {
+      font-family: var(--font-header);
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+      display: inline-block;
+    }
+
+    .contact-email:hover {
+      color: var(--accent);
+      text-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .footer-actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .footer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-family: var(--font-header);
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      transition: all 0.3s ease;
+    }
+
+    .footer-btn:hover {
+      background: #ffffff;
+      color: var(--bg-dark);
+      border-color: #ffffff;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .social-links a {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      font-size: 0.8rem;
+      color: rgba(156, 163, 175, 0.4);
+      font-family: var(--font-header);
+      letter-spacing: 0.05em;
+    }
+
+    /* VIDEO PLAY MODAL */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(4, 4, 5, 0.92);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      padding: 20px;
+    }
+
+    .modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      width: 100%;
+      max-width: 1100px;
+      background: #0f1015;
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      max-height: 90vh;
+      transition: max-width 0.3s ease;
+    }
+
+    .modal-content.video-only {
+      grid-template-columns: 1fr;
+      max-width: 900px;
+    }
+
+    .modal-content.video-only .modal-info-side {
+      display: none;
+    }
+
+    .modal-video-side {
+      position: relative;
+      width: 100%;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    }
+
+    .modal-video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .modal-info-side {
+      padding: 40px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      z-index: 10;
+      transition: all 0.3s;
+    }
+
+    .close-modal:hover {
+      background: #ffffff;
+      color: var(--bg-dark);
+    }
+
+    .modal-meta {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-family: var(--font-header);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .modal-title {
+      font-family: var(--font-header);
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .modal-synopsis {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .modal-subheading {
+      font-family: var(--font-header);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .modal-credits {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px 20px;
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+    }
+
+    .modal-credits dt {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .modal-credits dd {
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .modal-awards {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-award-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .modal-award-item i {
+      color: var(--accent);
+      font-size: 0.95rem;
+      margin-top: 2px;
+    }
+
+    /* Modal Button specifically for Brother options */
+    .brother-cta {
+      margin-top: auto;
+      padding: 14px 24px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #ffffff;
+      font-family: var(--font-header);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px var(--accent-glow);
+      transition: all 0.3s;
+    }
+
+    .brother-cta:hover {
+      background: #ffffff;
+      color: var(--bg-dark);
+      box-shadow: 0 4px 20px rgba(255,255,255,0.2);
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1024px) {
+      .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .films-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .modal-content {
+        grid-template-columns: 1fr;
+        max-height: 95vh;
+        overflow-y: auto;
+      }
+      .modal-info-side {
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 20px 6%;
+      }
+      .nav-links {
+        display: none; /* simple mobile design */
+      }
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      section {
+        padding: 80px 6%;
+      }
+      .films-grid, .services-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .contact-email {
+        font-size: 1.8rem;
+      }
+      .footer-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+    }
+  </style>
+
+  <!-- Structured Data for films (Movie / CreativeWork schema) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Movie",
+          "name": "Brother",
+          "director": {
+            "@type": "Person",
+            "name": "Aleksei Borovikov"
+          },
+          "dateCreated": "2023",
+          "duration": "PT18M",
+          "genre": "Drama",
+          "thumbnailUrl": "https://film.aborovikov.com/images/noroot_abeede2c.png",
+          "sameAs": "https://aborovikov.com/ccc/"
+        },
+        {
+          "@type": "Movie",
+          "name": "Glances",
+          "director": {
+            "@type": "Person",
+            "name": "Aleksei Borovikov"
+          },
+          "dateCreated": "2020",
+          "duration": "PT7M",
+          "genre": "Drama",
+          "thumbnailUrl": "https://film.aborovikov.com/images/Glances_Still013_cc.jpg"
+        },
+        {
+          "@type": "Movie",
+          "name": "Home",
+          "director": {
+            "@type": "Person",
+            "name": "Aleksei Borovikov"
+          },
+          "dateCreated": "2020",
+          "duration": "PT9M",
+          "genre": "Drama",
+          "thumbnailUrl": "https://film.aborovikov.com/images/Home_01cropped.jpg"
+        },
+        {
+          "@type": "Movie",
+          "name": "One More Please",
+          "director": {
+            "@type": "Person",
+            "name": "Aleksei Borovikov"
+          },
+          "dateCreated": "2019",
+          "duration": "PT5M",
+          "genre": "Drama",
+          "thumbnailUrl": "https://film.aborovikov.com/images/OMPStill28_cc.jpg"
+        },
+        {
+          "@type": "Movie",
+          "name": "Jump",
+          "director": {
+            "@type": "Person",
+            "name": "Aleksei Borovikov"
+          },
+          "dateCreated": "2018",
+          "duration": "PT5M",
+          "genre": "Drama"
+        },
+        {
+          "@type": "Movie",
+          "name": "Musician",
+          "director": {
+            "@type": "Person",
+            "name": "Aleksei Borovikov"
+          },
+          "dateCreated": "2016",
+          "duration": "PT18M",
+          "genre": "Drama",
+          "thumbnailUrl": "https://film.aborovikov.com/images/Musician033.jpg"
+        },
+        {
+          "@type": "Movie",
+          "name": "The Last Time",
+          "director": {
+            "@type": "Person",
+            "name": "Aleksei Borovikov"
+          },
+          "dateCreated": "2015",
+          "duration": "PT10M",
+          "genre": "Drama",
+          "thumbnailUrl": "https://film.aborovikov.com/images/_.jpg"
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+
+  <!-- NAVIGATION HEADER -->
+  <header>
+    <a href="https://aborovikov.com" class="logo">Aleksei Borovikov</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#films">Portfolio</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- HERO BANNER -->
+  <div class="hero">
+    <div class="video-background">
+      <!-- Ambient loop YouTube video -->
+      <iframe src="https://www.youtube.com/embed/4uerBov0F_U?autoplay=1&loop=1&playlist=4uerBov0F_U&mute=1&controls=0&showinfo=0&rel=0&enablejsapi=1" allow="autoplay; encrypted-media" frameborder="0"></iframe>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle">Independent Filmmaker & Editor</p>
+      <h1 class="hero-title">Crafting Stories That Resonate</h1>
+      <button class="play-reel-btn" onclick="openReelModal()">
+        <i class="fa-solid fa-play"></i>
+        <span>Play Directing Reel</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="about-container">
+      <div>
+        <span class="section-tag">Biography</span>
+        <h2 class="section-title" style="margin-bottom: 30px;">About Aleksei</h2>
+        <div class="about-text">
+          <p>Aleksei Borovikov is an award-winning independent filmmaker and editor with a journalistic background. He began his career working on regional and national television in Russia for 15 years. Aleksei graduated from a two-year Directing program at Moscow Film School and earned a Master of Fine Arts in Cinema Directing from Columbia College Chicago.</p>
+          <p>His films have been screened in over 150 festivals worldwide and are featured on US, Polish, and Taiwanese streaming platforms. Besides his creative endeavors, Aleksei judges submissions for multiple film festivals across the United States, including Outfest Los Angeles, Reeling, and Chicago International Children's Film Festival.</p>
+        </div>
+      </div>
+      <div>
+        <img class="about-awards-img" src="../images/awards_2025.png?v=2" alt="Film Festival Awards Laurels Grid">
+      </div>
+    </div>
+  </section>
+
+  <!-- FILMS GRID SECTION -->
+  <section id="films">
+    <div class="section-header">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="section-title">Selected Works</h2>
+    </div>
+
+    <div class="films-grid">
+      <!-- 1. Brother -->
+      <div class="film-card" onclick="openFilmModal('brother')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/noroot_abeede2c.png?v=2" alt="Brother">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Short Film · 2023</div>
+          <h3 class="film-title">Brother</h3>
+        </div>
+      </div>
+
+      <!-- 2. High Time -->
+      <div class="film-card" onclick="openFilmModal('hightime')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/HighTime5.png?v=2" alt="High Time">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Music video</div>
+          <h3 class="film-title">High Time</h3>
+        </div>
+      </div>
+
+      <!-- 3. Road Friend -->
+      <div class="film-card" onclick="openFilmModal('dogs')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/Road_Friend3.png?v=2" alt="Road Friend">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Narrative promo</div>
+          <h3 class="film-title">Road Friend</h3>
+        </div>
+      </div>
+
+      <!-- 4. Glances -->
+      <div class="film-card" onclick="openFilmModal('glances')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/Glances_Still013_cc.jpg?v=2" alt="Glances">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Short Film · 2020</div>
+          <h3 class="film-title">Glances</h3>
+        </div>
+      </div>
+
+      <!-- 5. Home -->
+      <div class="film-card" onclick="openFilmModal('home')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/Home_01cropped.jpg?v=2" alt="Home">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Short Film · 2020</div>
+          <h3 class="film-title">Home</h3>
+        </div>
+      </div>
+
+      <!-- 6. One More Please -->
+      <div class="film-card" onclick="openFilmModal('omp')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/OMPStill28_cc.jpg?v=2" alt="One More Please">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Short Film · 2019</div>
+          <h3 class="film-title">One More Please</h3>
+        </div>
+      </div>
+
+      <!-- 7. Soft Play -->
+      <div class="film-card" onclick="openFilmModal('softplay')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/SoftPlay.png?v=2" alt="Soft Play">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Cover band promo</div>
+          <h3 class="film-title">Soft Play</h3>
+        </div>
+      </div>
+
+      <!-- 8. The Nutcracker -->
+      <div class="film-card" onclick="openFilmModal('aviapark')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/aviapark_002.jpg?v=2" alt="The Nutcracker">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Promo video</div>
+          <h3 class="film-title">The Nutcracker</h3>
+        </div>
+      </div>
+
+      <!-- 9. In a Cafe -->
+      <div class="film-card" onclick="openFilmModal('vkafe')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/__2.png?v=2" alt="In a Cafe">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Promo video</div>
+          <h3 class="film-title">In a Cafe</h3>
+        </div>
+      </div>
+
+      <!-- 10. Musician -->
+      <div class="film-card" onclick="openFilmModal('musician')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/Musician033.jpg?v=2" alt="Musician">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Short Film · 2016</div>
+          <h3 class="film-title">Musician</h3>
+        </div>
+      </div>
+
+      <!-- 11. Whisper -->
+      <div class="film-card" onclick="openFilmModal('shepot')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/shepot_007.jpg?v=2" alt="Whisper">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Detective pilot scene</div>
+          <h3 class="film-title">Whisper</h3>
+        </div>
+      </div>
+
+      <!-- 12. The Last Time -->
+      <div class="film-card" onclick="openFilmModal('thelasttime')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/_.jpg?v=2" alt="The Last Time">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Short Film · 2015</div>
+          <h3 class="film-title">The Last Time</h3>
+        </div>
+      </div>
+
+      <!-- 13. Hurts - Help -->
+      <div class="film-card" onclick="openFilmModal('hurts')">
+        <div class="film-thumbnail-wrapper">
+          <img class="film-thumbnail" src="../images/wedding_clip6.jpg?v=2" alt="Hurts - Help">
+          <div class="film-card-overlay"></div>
+        </div>
+        <div class="film-card-content">
+          <div class="film-meta">Music video</div>
+          <h3 class="film-title">Hurts - Help</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <div class="section-header">
+      <span class="section-tag">Collaborations</span>
+      <h2 class="section-title">Production Services</h2>
+    </div>
+
+    <div class="services-grid">
+      <!-- Postproduction -->
+      <div class="service-card">
+        <div class="service-icon-wrapper">
+          <i class="fa-solid fa-scissors"></i>
+        </div>
+        <div>
+          <h3 class="service-title">Postproduction Services</h3>
+          <p class="service-desc">Complete film and video editing editing services. From script pacing adjustments and structural story editing to final motion graphics, color correction, and sound sync.</p>
+        </div>
+      </div>
+
+      <!-- Commercial -->
+      <div class="service-card">
+        <div class="service-icon-wrapper">
+          <i class="fa-solid fa-video"></i>
+        </div>
+        <div>
+          <h3 class="service-title">Commercial Production</h3>
+          <p class="service-desc">Tailored video advertisements, corporate reels, and promotional videos designed to present your business or creative products effectively to a wider audience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER / CONTACT SECTION -->
+  <footer id="contact">
+    <p class="contact-title">Got a project? Let's discuss!</p>
+    <a href="mailto:alex@aborovikov.com" class="contact-email">alex@aborovikov.com</a>
+
+    <div class="footer-actions">
+      <a href="https://drive.google.com/file/d/10FgYjDEtzDhvGcxzALEl9rOoI5nKhlNm/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="footer-btn">
+        <i class="fa-solid fa-file-pdf"></i>
+        <span>Download Resume/CV</span>
+      </a>
+      <a href="https://aborovikov.com" class="footer-btn">
+        <i class="fa-solid fa-house"></i>
+        <span>Main Portal</span>
+      </a>
+    </div>
+
+    <div class="social-links">
+      <a href="https://www.imdb.com/name/nm8435878/" target="_blank" rel="noopener noreferrer" title="IMDb"><i class="fa-brands fa-imdb"></i></a>
+      <a href="https://fb.com/theborovikov" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/theborovikov/" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://vimeo.com/aborov" target="_blank" rel="noopener noreferrer" title="Vimeo"><i class="fa-brands fa-vimeo-v"></i></a>
+      <a href="https://www.youtube.com/user/aborov" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.linkedin.com/in/aborov/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+
+    <p class="copyright">© ALEKSEI BOROVIKOV · 2012-2026</p>
+  </footer>
+
+  <!-- DYNAMIC MODAL BOX -->
+  <div class="modal" id="filmModal">
+    <div class="close-modal" onclick="closeFilmModal()"><i class="fa-solid fa-xmark"></i></div>
+    <div class="modal-content">
+      <div class="modal-video-side">
+        <div class="modal-video-container">
+          <iframe id="modalIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="modal-info-side">
+        <span class="modal-meta" id="modalMeta">Short Film</span>
+        <h3 class="modal-title" id="modalTitle">Film Title</h3>
+        
+        <h4 class="modal-subheading">Synopsis</h4>
+        <p class="modal-synopsis" id="modalSynopsis">Film synopsis details go here.</p>
+        
+        <h4 class="modal-subheading">Credits</h4>
+        <dl class="modal-credits" id="modalCredits">
+          <!-- Wires credits key values -->
+        </dl>
+        
+        <h4 class="modal-subheading">Awards & Selections</h4>
+        <ul class="modal-awards" id="modalAwards">
+          <!-- Wires laurels list -->
+        </ul>
+
+        <!-- Dynamic CTA for dedicated film subpages -->
+        <a href="" target="_blank" rel="noopener noreferrer" class="brother-cta" id="modalCta" style="display: none;">
+          <!-- Content dynamically set in JS -->
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Project database
+    const filmDatabase = {
+      reel: {
+        title: 'Directing Reel',
+        meta: 'Cinematography & Editing Reel',
+        synopsis: '',
+        video: 'ybayASb_nn8',
+        videoType: 'youtube',
+        credits: {},
+        awards: [],
+        videoOnly: true
+      },
+      brother: {
+        title: 'Brother',
+        meta: 'Short Film · 2023 · 18 min',
+        synopsis: 'With his wedding to Carlos approaching, Tony, a young immigrant to the US, invites his conservative older sister to the ceremony — a fateful decision that forces Tony to choose between family acceptance and his identity.',
+        video: '6rt2zTxgjW4',
+        videoType: 'youtube',
+        credits: {
+          'Director': 'Aleksei Borovikov'
+        },
+        awards: [
+          {type: 'winner', festival: 'Telly Awards', category: 'Silver Telly - Student Film'},
+          {type: 'winner', festival: 'First Glance Film Festival', category: 'Best Director - Student Film'},
+          {type: 'winner', festival: 'European Cinematography Awards', category: 'Best Student Director'},
+          {type: 'winner', festival: 'Centre Film Festival', category: 'Best Student Film, US'},
+          {type: 'winner', festival: 'Out & Loud - Pune Film Festival', category: 'Best International Short Film'},
+          {type: 'winner', festival: 'Independent Shorts Awards', category: 'Best Cast Ensemble'},
+          {type: 'nominee', festival: 'SoHo International Film Festival', category: 'Best US Showcase Short Nominee'},
+          {type: 'nominee', festival: 'Burbank International Film Festival', category: 'Best LGBTQ Short Nominee'}
+        ],
+        ctaUrl: '/ccc/',
+        ctaText: 'Watch Film & More Screening Options',
+        ctaIcon: 'fa-ticket'
+      },
+      hightime: {
+        title: 'High Time',
+        meta: 'Music Video',
+        synopsis: '',
+        video: 'x41ftBwMlOU',
+        videoType: 'youtube',
+        credits: {},
+        awards: [],
+        videoOnly: true
+      },
+      dogs: {
+        title: 'Road Friend',
+        meta: 'Narrative Promo',
+        synopsis: '',
+        video: 'K5LDZSGeyW0',
+        videoType: 'youtube',
+        credits: {},
+        awards: [],
+        videoOnly: true
+      },
+      glances: {
+        title: 'Glances',
+        meta: 'Short Film · 2020 · 7 min',
+        synopsis: 'Emotionally driven story of two strangers who lock eyes in a cafe and have to deal with unexpected feelings.',
+        video: 'vUm2sLhy3oc',
+        videoType: 'youtube',
+        credits: {
+          'Director': 'Aleksei Borovikov'
+        },
+        awards: [
+          {type: 'nominee', festival: 'Reeling: Chicago LGBTQ+ Film Festival', category: 'Best Narrative Short Nominee'},
+          {type: 'nominee', festival: 'Roze Filmdagen Amsterdam', category: 'Best Short Film Nominee'},
+          {type: 'nominee', festival: 'Cortos en corto', category: 'Grand Prize Nominee'},
+          {type: 'nominee', festival: 'KASHISH Mumbai International Film Festival', category: 'Best Student Short Nominee'},
+          {type: 'nominee', festival: 'OutfestPeru', category: 'Best International Short Film Nominee'},
+          {type: 'nominee', festival: 'Out & Loud - Pune Film Festival', category: 'Best Short Film Nominee'}
+        ]
+      },
+      home: {
+        title: 'Home',
+        meta: 'Short Film · 2020 · 9 min',
+        synopsis: 'Helen in her 50s feels overwhelmed with memories about her motherhood and decides to sell the house and move away despite the entreaties of others.',
+        video: 'suFUZ59kAng',
+        videoType: 'youtube',
+        credits: {
+          'Director': 'Aleksei Borovikov'
+        },
+        awards: [
+          {type: 'nominee', festival: 'Wildwood Film Festival', category: 'Best Drama Nominee'},
+          {type: 'nominee', festival: 'Photometria in Motion', category: 'Best Short Film Nominee'}
+        ]
+      },
+      omp: {
+        title: 'One More Please',
+        meta: 'Short Film · 2019 · 5 min',
+        synopsis: 'A lonely young man begins a playful drinking game with a handsome stranger.',
+        video: 'o-YUCKEJ3eg',
+        videoType: 'youtube',
+        credits: {
+          'Director': 'Aleksei Borovikov'
+        },
+        awards: [
+          {type: 'nominee', festival: 'TLVFest - Tel Aviv LGBT Film Festival', category: 'Best International Short Film Nominee'},
+          {type: 'nominee', festival: 'Reeling: Chicago LGBTQ+ Film Festival', category: 'Best Narrative Short Nominee'},
+          {type: 'nominee', festival: 'CineMAiubit Film Festival', category: 'Best Short Film Nominee'},
+          {type: 'nominee', festival: 'Jacksonville Film Festival', category: 'Best Short Narrative Nominee'},
+          {type: 'nominee', festival: 'KASHISH Mumbai Pride Film Festival', category: 'Best Student Short Nominee'},
+          {type: 'nominee', festival: 'North Carolina LGBTQ+ Film Festival', category: 'Best Short Film Nominee'}
+        ]
+      },
+      softplay: {
+        title: 'Soft Play',
+        meta: 'Cover Band Promo',
+        synopsis: '',
+        video: 'EuRI4VdrkPw',
+        videoType: 'youtube',
+        credits: {},
+        awards: [],
+        videoOnly: true
+      },
+      aviapark: {
+        title: 'The Nutcracker',
+        meta: 'Promo Video',
+        synopsis: '',
+        video: 'ro__5EPO6C4',
+        videoType: 'youtube',
+        credits: {},
+        awards: [],
+        videoOnly: true
+      },
+      vkafe: {
+        title: 'In a Cafe',
+        meta: 'Promo Video',
+        synopsis: '',
+        video: '241755886',
+        videoType: 'vimeo',
+        credits: {},
+        awards: [],
+        videoOnly: true
+      },
+      musician: {
+        title: 'Musician',
+        meta: 'Short Film · 2016 · 18 min',
+        synopsis: "A young pianist preparing for an audition at a prestigious music school faces a personal crisis when he discovers his parents' impending divorce, leading him to take matters into his own hands.",
+        video: 'mWobsMvW_cU',
+        videoType: 'youtube',
+        credits: {
+          'Director': 'Aleksei Borovikov'
+        },
+        awards: [
+          {type: 'winner', festival: 'Independent Days', category: 'Georg Fricker Award'},
+          {type: 'winner', festival: 'Movie Screen Festival', category: 'Best Children / Kids Film'},
+          {type: 'winner', festival: 'Illinifest Student Film Festival', category: 'Best Sound Design'},
+          {type: 'nominee', festival: 'Grand Off World Independent Film Awards', category: 'Best Actor Nominee'},
+          {type: 'nominee', festival: 'Festival of Nations, Austria', category: 'Best Short Film Nominee'},
+          {type: 'nominee', festival: 'KINOLUB International Film Festival', category: 'Best Short Film Nominee'}
+        ],
+        ctaUrl: '/musician/',
+        ctaText: 'Visit Dedicated Film Page',
+        ctaIcon: 'fa-circle-info'
+      },
+      shepot: {
+        title: 'Whisper',
+        meta: 'Detective Pilot Scene',
+        synopsis: '',
+        video: 'PdgzrhjN4EU',
+        videoType: 'youtube',
+        credits: {},
+        awards: [],
+        videoOnly: true
+      },
+      thelasttime: {
+        title: 'The Last Time',
+        meta: 'Short Film · 2015 · 10 min',
+        synopsis: 'Diana knows this apartment as well as its owner. Time after time she comes here to help a young writer compose spicy stories. But will she be able to get out of this game unharmed?',
+        video: 'A1CGk30Z0HQ',
+        videoType: 'youtube',
+        credits: {
+          'Director': 'Aleksei Borovikov'
+        },
+        awards: [
+          {type: 'winner', festival: 'Versta Film Festival 2016', category: 'Prize Winner'},
+          {type: 'nominee', festival: 'Sochi Open Russian Film Festival', category: 'Kinotavr. Short Film Nominee'},
+          {type: 'nominee', festival: 'Art Short 2015', category: 'Official Selection'},
+          {type: 'nominee', festival: 'Västerås Film Festival 2016', category: 'Official Selection'}
+        ]
+      },
+      jump: {
+        title: 'Jump',
+        meta: 'Short Film · 2018 · 5 min',
+        synopsis: 'The young parachutist is going to perform his first jump.',
+        video: '258229115',
+        videoType: 'vimeo',
+        credits: {
+          'Director': 'Aleksei Borovikov'
+        },
+        awards: []
+      },
+      hurts: {
+        title: 'Hurts - Help',
+        meta: 'Music Video',
+        synopsis: '',
+        video: 'o4ShlHCpoVY',
+        videoType: 'youtube',
+        credits: {},
+        awards: [],
+        videoOnly: true
+      }
+    };
+
+    function openFilmModal(projectKey) {
+      const data = filmDatabase[projectKey];
+      if (!data) return;
+
+      const modalContent = document.querySelector('.modal-content');
+      if (data.videoOnly || projectKey === 'reel') {
+        modalContent.classList.add('video-only');
+      } else {
+        modalContent.classList.remove('video-only');
+      }
+
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalMeta').innerText = data.meta;
+      document.getElementById('modalSynopsis').innerText = data.synopsis || '';
+
+      // Embed video based on type
+      const iframe = document.getElementById('modalIframe');
+      if (data.video) {
+        if (data.videoType === 'vimeo') {
+          iframe.src = 'https://player.vimeo.com/video/' + data.video + '?autoplay=1';
+        } else {
+          iframe.src = 'https://www.youtube.com/embed/' + data.video + '?autoplay=1&enablejsapi=1&rel=0&showinfo=0';
+        }
+      } else {
+        iframe.src = '';
+      }
+
+      // Wires Credits
+      const creditsContainer = document.getElementById('modalCredits');
+      creditsContainer.innerHTML = '';
+      if (data.credits) {
+        for (const [key, value] of Object.entries(data.credits)) {
+          const dt = document.createElement('dt');
+          dt.innerText = key;
+          const dd = document.createElement('dd');
+          dd.innerText = value;
+          creditsContainer.appendChild(dt);
+          creditsContainer.appendChild(dd);
+        }
+      }
+
+      // Wires Awards with winner/nominee distinction
+      const awardsContainer = document.getElementById('modalAwards');
+      awardsContainer.innerHTML = '';
+      if (data.awards) {
+        data.awards.forEach(function(award) {
+          const li = document.createElement('li');
+          li.className = 'modal-award-item';
+          const iconColor = award.type === 'winner' ? '#ffd700' : '#c0c0c0';
+          li.innerHTML = '<i class="fa-solid fa-award" style="color: ' + iconColor + '"></i><span><strong>' + award.festival + '</strong> — ' + award.category + '</span>';
+          awardsContainer.appendChild(li);
+        });
+      }
+
+      // Dynamic CTA link for dedicated subpages
+      const ctaBtn = document.getElementById('modalCta');
+      if (data.ctaUrl) {
+        ctaBtn.href = data.ctaUrl;
+        const iconClass = data.ctaIcon || 'fa-arrow-up-right-from-square';
+        ctaBtn.innerHTML = '<i class="fa-solid ' + iconClass + '"></i><span>' + (data.ctaText || 'Visit Dedicated Page') + '</span>';
+        ctaBtn.style.display = 'flex';
+      } else {
+        ctaBtn.style.display = 'none';
+      }
+
+      document.getElementById('filmModal').classList.add('active');
+    }
+
+    function closeFilmModal() {
+      document.getElementById('filmModal').classList.remove('active');
+      document.getElementById('modalIframe').src = ''; // stop playback
+    }
+
+    function openReelModal() {
+      openFilmModal('reel');
+    }
+
+    // Close modal when clicking outside content
+    document.getElementById('filmModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeFilmModal();
+      }
+    });
+
+    // Dynamic subdomain rewriting for local/preview deployments
+    document.addEventListener('DOMContentLoaded', () => {
+      const hostname = window.location.hostname.toLowerCase();
+      const isLocalOrPreview = 
+        hostname.endsWith('.pages.dev') || 
+        hostname === 'localhost' || 
+        hostname === '127.0.0.1';
+      
+      if (isLocalOrPreview) {
+        document.querySelectorAll('a').forEach(a => {
+          try {
+            const linkUrl = new URL(a.href);
+            const linkHost = linkUrl.hostname.toLowerCase();
+            if (linkHost === 'film.aborovikov.com') {
+              if (
+                linkUrl.pathname.startsWith('/ccc') || 
+                linkUrl.pathname.startsWith('/musician') || 
+                linkUrl.pathname.startsWith('/musician-ru')
+              ) {
+                a.href = linkUrl.pathname + linkUrl.search + linkUrl.hash;
+              } else {
+                a.href = '/film' + linkUrl.pathname + linkUrl.search + linkUrl.hash;
+              }
+            } else if (linkHost === 'dev.aborovikov.com') {
+              a.href = '/dev' + linkUrl.pathname + linkUrl.search + linkUrl.hash;
+            } else if (linkHost === 'brother.aborovikov.com') {
+              a.href = '/brother' + linkUrl.pathname + linkUrl.search + linkUrl.hash;
+            } else if (linkHost === 'aborovikov.com') {
+              a.href = linkUrl.pathname + linkUrl.search + linkUrl.hash;
+            }
+          } catch (e) {
+            // Ignored for relative/anchor links
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
