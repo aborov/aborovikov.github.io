@@ -413,34 +413,35 @@
 
   <!-- Structured Data for Apps (SoftwareApplication schema) -->
   <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Watchin.app",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "All",
-        "url": "https://watchin.app",
-        "description": "An AI-powered film recommendation and discovery app using advanced semantic and vector embeddings.",
-        "author": {
-          "@type": "Person",
-          "name": "Aleksei Borovikov"
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Watchin.app",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "All",
+          "url": "https://watchin.app",
+          "description": "An AI-powered film recommendation and discovery app using advanced semantic and vector embeddings.",
+          "author": {
+            "@type": "Person",
+            "name": "Aleksei Borovikov"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Narratiq.app",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "All",
+          "url": "https://narratiq.app",
+          "description": "An AI screenplay structure analyzer visualizing narrative pacing and character arcs.",
+          "author": {
+            "@type": "Person",
+            "name": "Aleksei Borovikov"
+          }
         }
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Narratiq.app",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "All",
-        "url": "https://narratiq.app",
-        "description": "An AI screenplay structure analyzer visualizing narrative pacing and character arcs.",
-        "author": {
-          "@type": "Person",
-          "name": "Aleksei Borovikov"
-        }
-      }
-    ]
+      ]
+    }
   </script>
 </head>
 <body>
