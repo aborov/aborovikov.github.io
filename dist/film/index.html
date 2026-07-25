@@ -546,6 +546,26 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
+      position: relative;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    }
+
+    .modal-info-side::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .modal-info-side::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .modal-info-side::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+    }
+
+    .modal-info-side::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
     }
 
     .close-modal {
@@ -631,6 +651,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      margin-bottom: 24px;
     }
 
     .modal-award-item {
@@ -649,7 +670,7 @@
       margin-top: 2px;
     }
 
-    /* Modal Button specifically for Brother options */
+    /* Modal Button specifically for Brother / film options */
     .brother-cta {
       margin-top: auto;
       padding: 14px 24px;
@@ -664,8 +685,12 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      box-shadow: 0 4px 15px var(--accent-glow);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 4px 15px var(--accent-glow);
       transition: all 0.3s;
+      flex-shrink: 0;
+      position: sticky;
+      bottom: 0;
+      z-index: 5;
     }
 
     .brother-cta:hover {
@@ -1388,6 +1413,9 @@
       } else {
         ctaBtn.style.display = 'none';
       }
+
+      const infoSide = document.querySelector('.modal-info-side');
+      if (infoSide) infoSide.scrollTop = 0;
 
       document.getElementById('filmModal').classList.add('active');
     }
