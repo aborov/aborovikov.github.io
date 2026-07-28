@@ -1,53 +1,88 @@
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   const hostname = url.hostname.toLowerCase();
+  const pathname = url.pathname;
 
-  // Bypass subdomain routing for restored dedicated subpages (/ccc/, /musician/, /musician-ru/)
+  // 1. WWW Subdomain Normalization (www.aborovikov.com -> 301 -> aborovikov.com)
+  if (hostname === 'www.aborovikov.com' || hostname.endsWith('.www.aborovikov.com')) {
+    url.hostname = 'aborovikov.com';
+    url.protocol = 'https:';
+    return Response.redirect(url.toString(), 301);
+  }
+
+  // 2. Bare Domain Subfolder to Subdomain 301 Redirects
+  if (hostname === 'aborovikov.com') {
+    if (pathname === '/film' || pathname.startsWith('/film/')) {
+      const rest = pathname.replace(/^\/film/, '') || '/';
+      return Response.redirect(`https://film.aborovikov.com${rest}${url.search}`, 301);
+    }
+    if (pathname === '/dev' || pathname.startsWith('/dev/')) {
+      const rest = pathname.replace(/^\/dev/, '') || '/';
+      return Response.redirect(`https://dev.aborovikov.com${rest}${url.search}`, 301);
+    }
+    if (pathname === '/brother' || pathname.startsWith('/brother/')) {
+      const rest = pathname.replace(/^\/brother/, '') || '/';
+      return Response.redirect(`https://brother.aborovikov.com${rest}${url.search}`, 301);
+    }
+  }
+
+  // 3. Subdomain Redundant Path Cleanup
+  if (hostname === 'film.aborovikov.com' || hostname.endsWith('.film.aborovikov.com')) {
+    if (pathname === '/film' || pathname.startsWith('/film/')) {
+      const rest = pathname.replace(/^\/film/, '') || '/';
+      return Response.redirect(`https://film.aborovikov.com${rest}${url.search}`, 301);
+    }
+  } else if (hostname === 'dev.aborovikov.com' || hostname.endsWith('.dev.aborovikov.com')) {
+    if (pathname === '/dev' || pathname.startsWith('/dev/')) {
+      const rest = pathname.replace(/^\/dev/, '') || '/';
+      return Response.redirect(`https://dev.aborovikov.com${rest}${url.search}`, 301);
+    }
+  } else if (hostname === 'brother.aborovikov.com' || hostname.endsWith('.brother.aborovikov.com')) {
+    if (pathname === '/brother' || pathname.startsWith('/brother/')) {
+      const rest = pathname.replace(/^\/brother/, '') || '/';
+      return Response.redirect(`https://brother.aborovikov.com${rest}${url.search}`, 301);
+    }
+  }
+
+  const isAssetRequest = 
+    pathname.startsWith('/css/') || 
+    pathname.startsWith('/js/') || 
+    pathname.startsWith('/images/') ||
+    pathname.includes('.');
+
+  // 4. Trailing Slash Normalization for Non-Asset Paths (/ccc -> 301 -> /ccc/)
+  if (!isAssetRequest && pathname !== '/' && !pathname.endsWith('/')) {
+    url.pathname = `${pathname}/`;
+    return Response.redirect(url.toString(), 301);
+  }
+
+  // 5. Bypass Subdomain Routing for Restored Dedicated Subpages (/ccc/, /musician/, /musician-ru/)
   if (
-    url.pathname === '/ccc' || url.pathname.startsWith('/ccc/') ||
-    url.pathname === '/musician' || url.pathname.startsWith('/musician/') ||
-    url.pathname === '/musician-ru' || url.pathname.startsWith('/musician-ru/')
+    pathname.startsWith('/ccc/') ||
+    pathname.startsWith('/musician/') ||
+    pathname.startsWith('/musician-ru/')
   ) {
     return context.next();
   }
 
-  // If requesting assets (images, css, js) from a subdomain, check if they exist under the subdomain folder or fall back to root assets
-  const isAssetRequest = 
-    url.pathname.startsWith('/css/') || 
-    url.pathname.startsWith('/js/') || 
-    url.pathname.startsWith('/images/') ||
-    url.pathname.includes('.');
-
-  // 1. Route film.aborovikov.com -> /film
+  // 6. Subdomain Internal Serving (e.g. film.aborovikov.com/ -> serves /film/ internally)
   if (hostname === 'film.aborovikov.com' || hostname.endsWith('.film.aborovikov.com')) {
-    if (!url.pathname.startsWith('/film')) {
-      if (!isAssetRequest || url.pathname.startsWith('/film/')) {
-        url.pathname = `/film${url.pathname}`;
-        return fetch(new Request(url.toString(), context.request));
-      }
+    if (!isAssetRequest) {
+      url.pathname = `/film${pathname}`;
+      return fetch(new Request(url.toString(), context.request));
+    }
+  } else if (hostname === 'dev.aborovikov.com' || hostname.endsWith('.dev.aborovikov.com')) {
+    if (!isAssetRequest) {
+      url.pathname = `/dev${pathname}`;
+      return fetch(new Request(url.toString(), context.request));
+    }
+  } else if (hostname === 'brother.aborovikov.com' || hostname.endsWith('.brother.aborovikov.com')) {
+    if (!isAssetRequest) {
+      url.pathname = `/brother${pathname}`;
+      return fetch(new Request(url.toString(), context.request));
     }
   }
 
-  // 2. Route dev.aborovikov.com -> /dev
-  else if (hostname === 'dev.aborovikov.com' || hostname.endsWith('.dev.aborovikov.com')) {
-    if (!url.pathname.startsWith('/dev')) {
-      if (!isAssetRequest || url.pathname.startsWith('/dev/')) {
-        url.pathname = `/dev${url.pathname}`;
-        return fetch(new Request(url.toString(), context.request));
-      }
-    }
-  }
-
-  // 3. Route brother.aborovikov.com -> /brother
-  else if (hostname === 'brother.aborovikov.com' || hostname.endsWith('.brother.aborovikov.com')) {
-    if (!url.pathname.startsWith('/brother')) {
-      if (!isAssetRequest || url.pathname.startsWith('/brother/')) {
-        url.pathname = `/brother${url.pathname}`;
-        return fetch(new Request(url.toString(), context.request));
-      }
-    }
-  }
-
-  // Otherwise, route normally (aborovikov.com -> root of project)
+  // 7. Default Routing (aborovikov.com -> root static files)
   return context.next();
 }
