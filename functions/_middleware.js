@@ -1,7 +1,27 @@
 export async function onRequest(context) {
+  // If this is an internal rewrite fetch, bypass middleware redirect rules and serve static content
+  if (context.request.headers.get('x-internal-rewrite') === '1') {
+    return context.next();
+  }
+
   const url = new URL(context.request.url);
   const hostname = url.hostname.toLowerCase();
   const pathname = url.pathname;
+
+  // Helper to make internal fetch subrequests without triggering redirect loops
+  function fetchInternal(targetPath) {
+    const targetUrl = new URL(context.request.url);
+    targetUrl.pathname = targetPath;
+    const reqHeaders = new Headers(context.request.headers);
+    reqHeaders.set('x-internal-rewrite', '1');
+    const internalReq = new Request(targetUrl.toString(), {
+      method: context.request.method,
+      headers: reqHeaders,
+      body: context.request.body,
+      redirect: 'manual'
+    });
+    return fetch(internalReq);
+  }
 
   // 1. WWW Subdomain Normalization (www.aborovikov.com -> 301 -> aborovikov.com)
   if (hostname === 'www.aborovikov.com' || hostname.endsWith('.www.aborovikov.com')) {
@@ -26,7 +46,7 @@ export async function onRequest(context) {
     }
   }
 
-  // 3. Subdomain Redundant Path Cleanup
+  // 3. Subdomain Redundant Path Cleanup (e.g. film.aborovikov.com/film/ -> 301 -> film.aborovikov.com/)
   if (hostname === 'film.aborovikov.com' || hostname.endsWith('.film.aborovikov.com')) {
     if (pathname === '/film' || pathname.startsWith('/film/')) {
       const rest = pathname.replace(/^\/film/, '') || '/';
@@ -68,18 +88,15 @@ export async function onRequest(context) {
   // 6. Subdomain Internal Serving (e.g. film.aborovikov.com/ -> serves /film/ internally)
   if (hostname === 'film.aborovikov.com' || hostname.endsWith('.film.aborovikov.com')) {
     if (!isAssetRequest) {
-      url.pathname = `/film${pathname}`;
-      return fetch(new Request(url.toString(), context.request));
+      return fetchInternal(`/film${pathname}`);
     }
   } else if (hostname === 'dev.aborovikov.com' || hostname.endsWith('.dev.aborovikov.com')) {
     if (!isAssetRequest) {
-      url.pathname = `/dev${pathname}`;
-      return fetch(new Request(url.toString(), context.request));
+      return fetchInternal(`/dev${pathname}`);
     }
   } else if (hostname === 'brother.aborovikov.com' || hostname.endsWith('.brother.aborovikov.com')) {
     if (!isAssetRequest) {
-      url.pathname = `/brother${pathname}`;
-      return fetch(new Request(url.toString(), context.request));
+      return fetchInternal(`/brother${pathname}`);
     }
   }
 
