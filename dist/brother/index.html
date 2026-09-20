@@ -27,7 +27,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
 
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <style>
+    .film-overview {
+      margin: 16px 0 20px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+    .film-synopsis {
+      margin-bottom: 10px;
+    }
+    .film-details {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .film-awards-highlight {
+      font-size: 0.8rem;
+      color: #cbd5e1;
+      font-style: italic;
+    }
     .sr-only {
       position: absolute;
       width: 1px;
@@ -177,6 +202,8 @@
       "@context": "https://schema.org",
       "@type": "Movie",
       "name": "Brother",
+      "url": "https://brother.aborovikov.com/",
+      "image": "https://brother.aborovikov.com/images/Brother-img-sq.jpg",
       "director": {
         "@type": "Person",
         "name": "Aleksei Borovikov"
@@ -184,8 +211,11 @@
       "dateCreated": "2023",
       "duration": "PT18M",
       "genre": "Drama",
-      "image": "https://brother.aborovikov.com/images/Brother-img-sq.jpg",
-      "sameAs": "https://www.imdb.com/title/tt18765056/"
+      "description": "With his wedding approaching, Tony, a young immigrant to the US, invites his conservative older sister to the ceremony — a fateful decision that forces Tony to choose between family acceptance and his identity.",
+      "sameAs": [
+        "https://www.imdb.com/title/tt18765056/",
+        "https://aborovikov.com/ccc/"
+      ]
     }
   </script>
 </head>
@@ -197,6 +227,12 @@
     <img src="images/Brother-img-sq.jpg" alt="Brother film icon" class="banner-image">
 
     <img src="images/Brother-title-white-horiz.png" alt="Brother" class="title-img">
+
+    <div class="film-overview">
+      <p class="film-synopsis">With his wedding to Carlos approaching, Tony, a young immigrant to the US, invites his conservative older sister to the ceremony — a fateful decision that forces Tony to choose between family acceptance and his identity.</p>
+      <div class="film-details">Short Narrative Film · 2023 · 18 min · Directed by Aleksei Borovikov</div>
+      <div class="film-awards-highlight">Winner of 6 international awards including Silver Telly and Best Director (First Glance Film Festival). Official selection at 30+ film festivals worldwide.</div>
+    </div>
 
     <div class="socials">
       <a href="https://www.facebook.com/brotherfilmshort" target="_blank" rel="noopener noreferrer">
@@ -217,7 +253,7 @@
       </div>
       
       <div class="link-card">
-        <a href="https://youtu.be/6rt2zTxgjW4" target="_blank" rel="noopener noreferrer">Watch the Trailer</a>
+        <a href="https://www.youtube.com/watch?v=6rt2zTxgjW4" target="_blank" rel="noopener noreferrer">Watch the Trailer</a>
       </div>
       
       <div class="link-card">
