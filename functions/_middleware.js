@@ -24,10 +24,8 @@ export async function onRequest(context) {
   }
 
   // 1. WWW Subdomain Normalization (www.aborovikov.com -> 301 -> aborovikov.com)
-  if (hostname === 'www.aborovikov.com' || hostname.endsWith('.www.aborovikov.com')) {
-    url.hostname = 'aborovikov.com';
-    url.protocol = 'https:';
-    return Response.redirect(url.toString(), 301);
+  if (hostname === 'www.aborovikov.com' || hostname.endsWith('.www.aborovikov.com') || hostname.startsWith('www.')) {
+    return Response.redirect(`https://aborovikov.com${pathname}${url.search}`, 301);
   }
 
   // 2. Bare Domain Subfolder to Subdomain 301 Redirects
