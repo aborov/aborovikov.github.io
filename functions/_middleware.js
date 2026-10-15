@@ -28,6 +28,24 @@ export async function onRequest(context) {
     return Response.redirect(`https://aborovikov.com${pathname}${url.search}`, 301);
   }
 
+  // 1b. Legacy URL 301 Redirects (eliminate 404s for all retired historical routes)
+  if (pathname === '/bs' || pathname.startsWith('/bs/') || pathname === '/bs-ru' || pathname.startsWith('/bs-ru/')) {
+    return Response.redirect(`https://brother.aborovikov.com/`, 301);
+  }
+  if (pathname === '/ru' || pathname.startsWith('/ru/')) {
+    return Response.redirect(`https://aborovikov.com/musician-ru/`, 301);
+  }
+  if (
+    pathname === '/commercial' || pathname.startsWith('/commercial/') ||
+    pathname === '/portfolio' || pathname.startsWith('/portfolio/') ||
+    pathname === '/post' || pathname.startsWith('/post/')
+  ) {
+    return Response.redirect(`https://film.aborovikov.com/`, 301);
+  }
+  if (pathname === '/en' || pathname.startsWith('/en/')) {
+    return Response.redirect(`https://aborovikov.com/`, 301);
+  }
+
   // 2. Bare Domain Subfolder to Subdomain 301 Redirects
   if (hostname === 'aborovikov.com') {
     if (pathname === '/film' || pathname.startsWith('/film/')) {
