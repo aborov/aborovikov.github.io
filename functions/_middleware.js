@@ -1,3 +1,24 @@
+// Helper to ensure HSTS header is present on all responses (200s and 301 redirects)
+function withSecurityHeaders(response) {
+  const newHeaders = new Headers(response.headers);
+  newHeaders.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: newHeaders
+  });
+}
+
+function redirect301(targetUrl) {
+  return new Response(null, {
+    status: 301,
+    headers: {
+      'Location': targetUrl,
+      'Strict-Transport-Security': 'max-age=31536000; includeSubDomains'
+    }
+  });
+}
+
 export async function onRequest(context) {
   // If this is an internal rewrite fetch, bypass middleware redirect rules and serve static content
   if (context.request.headers.get('x-internal-rewrite') === '1') {
@@ -9,7 +30,7 @@ export async function onRequest(context) {
   const pathname = url.pathname;
 
   // Helper to make internal fetch subrequests without triggering redirect loops
-  function fetchInternal(targetPath) {
+  async function fetchInternal(targetPath) {
     const targetUrl = new URL(context.request.url);
     targetUrl.pathname = targetPath;
     const reqHeaders = new Headers(context.request.headers);
@@ -20,45 +41,46 @@ export async function onRequest(context) {
       body: context.request.body,
       redirect: 'manual'
     });
-    return fetch(internalReq);
+    const res = await fetch(internalReq);
+    return withSecurityHeaders(res);
   }
 
   // 1. WWW Subdomain Normalization (www.aborovikov.com -> 301 -> aborovikov.com)
   if (hostname === 'www.aborovikov.com' || hostname.endsWith('.www.aborovikov.com') || hostname.startsWith('www.')) {
-    return Response.redirect(`https://aborovikov.com${pathname}${url.search}`, 301);
+    return redirect301(`https://aborovikov.com${pathname}${url.search}`);
   }
 
   // 1b. Legacy URL 301 Redirects (eliminate 404s for all retired historical routes)
   if (pathname === '/bs' || pathname.startsWith('/bs/') || pathname === '/bs-ru' || pathname.startsWith('/bs-ru/')) {
-    return Response.redirect(`https://brother.aborovikov.com/`, 301);
+    return redirect301(`https://brother.aborovikov.com/`);
   }
   if (pathname === '/ru' || pathname.startsWith('/ru/')) {
-    return Response.redirect(`https://aborovikov.com/musician-ru/`, 301);
+    return redirect301(`https://aborovikov.com/musician-ru/`);
   }
   if (
     pathname === '/commercial' || pathname.startsWith('/commercial/') ||
     pathname === '/portfolio' || pathname.startsWith('/portfolio/') ||
     pathname === '/post' || pathname.startsWith('/post/')
   ) {
-    return Response.redirect(`https://film.aborovikov.com/`, 301);
+    return redirect301(`https://film.aborovikov.com/`);
   }
   if (pathname === '/en' || pathname.startsWith('/en/')) {
-    return Response.redirect(`https://aborovikov.com/`, 301);
+    return redirect301(`https://aborovikov.com/`);
   }
 
   // 2. Bare Domain Subfolder to Subdomain 301 Redirects
   if (hostname === 'aborovikov.com') {
     if (pathname === '/film' || pathname.startsWith('/film/')) {
       const rest = pathname.replace(/^\/film/, '') || '/';
-      return Response.redirect(`https://film.aborovikov.com${rest}${url.search}`, 301);
+      return redirect301(`https://film.aborovikov.com${rest}${url.search}`);
     }
     if (pathname === '/dev' || pathname.startsWith('/dev/')) {
       const rest = pathname.replace(/^\/dev/, '') || '/';
-      return Response.redirect(`https://dev.aborovikov.com${rest}${url.search}`, 301);
+      return redirect301(`https://dev.aborovikov.com${rest}${url.search}`);
     }
     if (pathname === '/brother' || pathname.startsWith('/brother/')) {
       const rest = pathname.replace(/^\/brother/, '') || '/';
-      return Response.redirect(`https://brother.aborovikov.com${rest}${url.search}`, 301);
+      return redirect301(`https://brother.aborovikov.com${rest}${url.search}`);
     }
   }
 
@@ -66,17 +88,17 @@ export async function onRequest(context) {
   if (hostname === 'film.aborovikov.com' || hostname.endsWith('.film.aborovikov.com')) {
     if (pathname === '/film' || pathname.startsWith('/film/')) {
       const rest = pathname.replace(/^\/film/, '') || '/';
-      return Response.redirect(`https://film.aborovikov.com${rest}${url.search}`, 301);
+      return redirect301(`https://film.aborovikov.com${rest}${url.search}`);
     }
   } else if (hostname === 'dev.aborovikov.com' || hostname.endsWith('.dev.aborovikov.com')) {
     if (pathname === '/dev' || pathname.startsWith('/dev/')) {
       const rest = pathname.replace(/^\/dev/, '') || '/';
-      return Response.redirect(`https://dev.aborovikov.com${rest}${url.search}`, 301);
+      return redirect301(`https://dev.aborovikov.com${rest}${url.search}`);
     }
   } else if (hostname === 'brother.aborovikov.com' || hostname.endsWith('.brother.aborovikov.com')) {
     if (pathname === '/brother' || pathname.startsWith('/brother/')) {
       const rest = pathname.replace(/^\/brother/, '') || '/';
-      return Response.redirect(`https://brother.aborovikov.com${rest}${url.search}`, 301);
+      return redirect301(`https://brother.aborovikov.com${rest}${url.search}`);
     }
   }
 
@@ -89,7 +111,7 @@ export async function onRequest(context) {
   // 4. Trailing Slash Normalization for Non-Asset Paths (/ccc -> 301 -> /ccc/)
   if (!isAssetRequest && pathname !== '/' && !pathname.endsWith('/')) {
     url.pathname = `${pathname}/`;
-    return Response.redirect(url.toString(), 301);
+    return redirect301(url.toString());
   }
 
   // 5. Bypass Subdomain Routing for Restored Dedicated Subpages (/ccc/, /musician/, /musician-ru/)
@@ -98,7 +120,8 @@ export async function onRequest(context) {
     pathname.startsWith('/musician/') ||
     pathname.startsWith('/musician-ru/')
   ) {
-    return context.next();
+    const res = await context.next();
+    return withSecurityHeaders(res);
   }
 
   // 6. Subdomain Internal Serving (e.g. film.aborovikov.com/ -> serves /film/ internally)
@@ -117,5 +140,6 @@ export async function onRequest(context) {
   }
 
   // 7. Default Routing (aborovikov.com -> root static files)
-  return context.next();
+  const res = await context.next();
+  return withSecurityHeaders(res);
 }
